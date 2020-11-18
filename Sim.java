@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Ethan Keene
+ * @author John Word
  */
 public class Sim extends JPanel implements KeyListener, MouseListener {
 
@@ -33,8 +33,8 @@ public class Sim extends JPanel implements KeyListener, MouseListener {
         
         frameCount++;
         
-        this.setBackground(Color.WHITE);		
-        
+        this.setBackground(Color.BLACK);		
+       
         world.draw(g);
     }
      

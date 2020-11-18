@@ -1,19 +1,13 @@
-
 package sim;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
-
-
-/**
- *
- * @author Ethan Keene
- */
 public class World {
     private final int SIZE = 600;
     private final Color bg = Color.GRAY;
-    private Blob[] blobs = new Blob[5000];
+    //declare array of Blobs
+    private Blob[] blobs = new Blob[1000];
     
     public World() {
         for (int i = 0; i < blobs.length; i++) {
@@ -22,10 +16,23 @@ public class World {
     }
     
     public void draw(Graphics g) {
-        //for each loop, enhanced for loop
+       
+        //For each loop, enhanced for loop
         for (Blob blob : blobs) {
+            if (blob.getHp() <= 0) continue;
             blob.move();
+            blob.collideWorldBounds(this);
+            for (Blob b2 : blobs) {
+                if (blob == b2) continue; 
+                if (b2.getHp() <= 0) continue;
+                blob.collide(b2);
+                }
             blob.draw(g);
         }
     }
+
+    public int getSIZE() {
+        return SIZE;
+    }
+    
 }
